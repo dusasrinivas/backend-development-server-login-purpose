@@ -11,12 +11,12 @@ const app = express();
 app.use(express.json());
 
 let db = null;
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 const initializeDBAndServer = async () => {
   try {
     db = await open({ filename: dbPath, driver: sqlite3.Database });
-    app.listen(port, () => {
+    app.listen(PORT, () => {
       console.log("Server Running at http://localhost:3000/");
     });
   } catch (e) {
