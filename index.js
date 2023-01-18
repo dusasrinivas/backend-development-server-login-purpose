@@ -1,14 +1,21 @@
 const express = require("express");
 const path = require("path");
 const { open } = require("sqlite");
+const bp = require("body-parser");
 const sqlite3 = require("sqlite3");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
 
+
 const dbPath = path.join(__dirname, "srinivas.db");
 const app = express();
+
+
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
+
 
 app.use(express.json());
 
