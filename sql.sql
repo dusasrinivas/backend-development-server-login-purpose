@@ -17,4 +17,4 @@
 -- values("banana");
 
 -- drop table fruits;
--- DELETE FROM user;
+DELETE FROM user;

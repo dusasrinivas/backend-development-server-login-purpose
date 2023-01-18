@@ -4,11 +4,26 @@ const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
+
 
 const dbPath = path.join(__dirname, "srinivas.db");
 const app = express();
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
+app.use(
+  cors({
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
+
 
 let db = null;
 const PORT = process.env.PORT || 3000
