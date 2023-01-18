@@ -33,13 +33,13 @@ app.use(
 
 
 let db = null;
-const PORT = process.env.PORT || 3000
+const port = process.env.PORT || 3001;
 
 const initializeDBAndServer = async () => {
   try {
     db = await open({ filename: dbPath, driver: sqlite3.Database });
-    app.listen(PORT, () => {
-      console.log("Server Running at http://localhost:3000/");
+    app.listen(3004, () => {
+      console.log("Server Running at http://localhost:3004/");
     });
   } catch (e) {
     console.log(`DB Error: ${e.message}`);
@@ -73,7 +73,8 @@ const authenticateToken = (request, response, next) => {
 	
 //User Register API
 app.post("/users/", async (request, response) => {
-  const { username, password } = request.body;
+  const { username, password } = request.body
+  
   const hashedPassword = await bcrypt.hash(request.body.password, 10);
   const selectUserQuery = `SELECT * FROM user WHERE username = '${username}'`;
   const dbUser = await db.get(selectUserQuery);
